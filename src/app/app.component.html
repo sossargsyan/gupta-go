@@ -1,0 +1,36 @@
+<mat-toolbar class="main-header">
+  <div class="left-side">
+    <button mat-icon-button aria-label="Menu button" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="app-title">AriTrain</span>
+  </div>
+  <div class="middle-side"></div>
+  <div class="right-side">
+    <button
+      mat-icon-button
+      (click)="toggleTheme()"
+      matTooltip="Switch theme"
+      aria-label="Switch theme button"
+    >
+      @if (isDarkMode) {
+      <mat-icon>light_mode</mat-icon>
+      } @else {
+      <mat-icon>dark_mode</mat-icon>
+      }
+    </button>
+  </div>
+</mat-toolbar>
+<mat-divider></mat-divider>
+<mat-drawer-container class="main-container">
+  <mat-drawer #drawer class="main-sidenav" mode="over" opened="false">
+    <div class="main-sidenav-top">
+      <p>Sidenav content</p>
+    </div>
+    <span>Version: {{ appVersion }}</span>
+  </mat-drawer>
+  <div class="main-content">
+    <span>AAA</span>
+    <span>BBB</span>
+  </div>
+</mat-drawer-container>

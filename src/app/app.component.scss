@@ -1,0 +1,33 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .left-side {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .app-title {
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+  .right-side {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+.main-container {
+  height: calc(100% - 65px);
+  .main-sidenav {
+    padding: 8px 16px;
+    .menu-divider {
+      padding: 8px 0;
+    }
+  }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+  }
+}
