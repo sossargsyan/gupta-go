@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .left-side {
+  &-section {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -11,14 +11,9 @@
       line-height: normal;
     }
   }
-  .right-side {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
 }
 .main-container {
-  height: calc(100% - 65px);
+  height: calc(100% - 57px);
   .main-sidenav {
     padding: 8px 16px;
     .menu-divider {
@@ -26,8 +21,16 @@
     }
   }
   .main-content {
+    max-width: 720px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 24px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .main-container {
+    height: calc(100% - 65px);
   }
 }
