@@ -20,5 +20,6 @@ export interface Game {
 export interface Level {
   id: string;
   name: string;
+  title: string;
   games: Game[];
 }

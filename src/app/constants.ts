@@ -7,7 +7,8 @@ export const homeRoute = '/';
 export const levels: Level[] = [
   {
     id: 'single-digit-numbers',
-    name: 'Single-Digit Numbers',
+    name: 'Level 1',
+    title: 'Single-Digit Numbers',
     games: [
       {
         id: Operations.Addition,
@@ -33,7 +34,8 @@ export const levels: Level[] = [
   },
   {
     id: 'two-digit-numbers',
-    name: 'Two-Digit Numbers',
+    name: 'Level 2',
+    title: 'Two-Digit Numbers',
     games: [
       {
         id: Operations.Addition,
@@ -59,7 +61,8 @@ export const levels: Level[] = [
   },
   {
     id: 'three-digit-numbers',
-    name: 'Three-Digit Numbers',
+    name: 'Level 3',
+    title: 'Three-Digit Numbers',
     games: [
       {
         id: Operations.Addition,

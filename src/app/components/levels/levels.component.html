@@ -2,7 +2,7 @@
   @for (level of levels; track level.id) {
   <mat-list-item (click)="openLevel(level.id)" class="level-item">
     <div matListItemTitle>{{ level.name }}</div>
-    <div matListItemLine>0/4</div>
+    <div matListItemLine>{{ level.title }}</div>
     <button mat-icon-button matListItemMeta class="open-button">
       <mat-icon>east</mat-icon>
     </button>

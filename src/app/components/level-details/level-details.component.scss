@@ -15,29 +15,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      padding: 24px;
-      gap: 24px;
-      .item-top {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .play-button {
-        height: 104px;
-        width: 104px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .play-icon {
-          height: 80%;
-          width: 80%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 50px;
-        }
-      }
+      align-items: stretch;
     }
   }
 }

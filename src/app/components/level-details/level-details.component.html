@@ -1,17 +1,16 @@
 <div class="game-header">
-    <h1>{{levelData().name}}</h1>
+  <h1>{{ levelData().name }}</h1>
 </div>
 <div class="games-container">
   @for (game of levelData().games; track game.id) {
-  <mat-card appearance="outlined" (click)="openGame(game.id)" class="game-item">
-    <mat-card-content class="item-content">
-      <div class="item-top">
-        <mat-icon>{{ getOperationIcon(game.id) }}</mat-icon>
-        {{ game.id | titlecase }}
-      </div>
-      <button mat-fab aria-label="Play game" class="play-button">
-        <mat-icon class="play-icon">play_circle_outline</mat-icon>
-      </button>
+  <mat-card appearance="outlined" class="game-item">
+    <img
+      mat-card-image
+      [src]="'images/' + game.id + '.png'"
+      [alt]="game.id + 'image'"
+    />
+    <mat-card-content (click)="openGame(game.id)" class="item-content">
+      <button mat-stroked-button>Play</button>
     </mat-card-content>
   </mat-card>
   }
