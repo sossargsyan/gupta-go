@@ -4,9 +4,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { ThemeType } from './types';
 import { JsonReaderService } from './services/json-reader.service';
@@ -21,8 +19,6 @@ import { JsonReaderService } from './services/json-reader.service';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    MatTooltipModule,
-    MatProgressBarModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
