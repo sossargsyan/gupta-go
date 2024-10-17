@@ -2,6 +2,8 @@ import { Level, Operations } from './types';
 
 export const duration = 60;
 
+export const homeRoute = '/';
+
 export const levels: Level[] = [
   {
     id: 'single-digit-numbers',

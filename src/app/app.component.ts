@@ -1,13 +1,22 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {
+  Component,
+  computed,
+  HostBinding,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
+import { Location } from '@angular/common';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 
-import { ThemeType } from './types';
 import { JsonReaderService } from './services/json-reader.service';
+import { ThemeType } from './types';
+import { homeRoute } from './constants';
 
 @Component({
   selector: 'app-root',
@@ -29,12 +38,20 @@ export class AppComponent implements OnInit {
     (localStorage.getItem('theme') as ThemeType) || ThemeType.Dark;
   isDarkMode: boolean = this.currentTheme === ThemeType.Dark;
   appVersion!: string;
-
-  constructor(private _jsonReaderService: JsonReaderService) {}
+  currentRoute = signal(homeRoute);
+  isHomeRoute = computed(() => this.currentRoute() === homeRoute);
+  private _jsonReaderService = inject(JsonReaderService);
+  private _router = inject(Router);
+  private _location = inject(Location);
 
   ngOnInit(): void {
     this._jsonReaderService.getAppVersion().subscribe((version) => {
       this.appVersion = version;
+    });
+    this._router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute.set(event.url);
+      }
     });
   }
 
@@ -47,5 +64,9 @@ export class AppComponent implements OnInit {
       localStorage.setItem('theme', ThemeType.Light);
       this.currentTheme = ThemeType.Light;
     }
+  }
+
+  goBack() {
+    this._location.back();
   }
 }

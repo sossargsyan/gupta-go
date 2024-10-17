@@ -1,8 +1,13 @@
 <mat-toolbar class="main-header">
   <div class="main-header-section">
+    @if (isHomeRoute()) {
     <button mat-icon-button aria-label="Menu button" (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon>menu</mat-icon></button
+    >} @else {
+    <button mat-icon-button aria-label="Back button" (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
     </button>
+    }
   </div>
   <div class="main-header-section">
     <span class="app-title">AriTrain</span>
