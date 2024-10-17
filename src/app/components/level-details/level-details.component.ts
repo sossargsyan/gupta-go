@@ -19,7 +19,6 @@ export class LevelDetailsComponent {
   private _router = inject(Router);
   private _route = inject(ActivatedRoute);
   private _us = inject(UtilsService);
-  levelId = input.required<string>();
   levelData = input.required<Level>();
 
   getOperationIcon(operationName: string): string {
