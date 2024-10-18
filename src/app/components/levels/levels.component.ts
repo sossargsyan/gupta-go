@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { LevelsService } from './levels.service';
+import { Level } from '../../types';
 
 @Component({
   selector: 'app-levels',
@@ -20,7 +21,9 @@ export class LevelsComponent {
   private _route = inject(ActivatedRoute);
   levels = this._ls.allLevels();
 
-  openLevel(id: string) {
-    this._router.navigate([id], { relativeTo: this._route });
+  openLevel(level: Level) {
+    if (level.unlocked) {
+      this._router.navigate([level.id], { relativeTo: this._route });
+    }
   }
 }

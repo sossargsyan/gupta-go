@@ -1,13 +1,21 @@
 <div class="levels">
   @for (level of levels; track level.id) {
-  <div matRipple class="level-ripple" (click)="openLevel(level.id)">
+  <div matRipple class="level-ripple" (click)="openLevel(level)">
     <mat-card appearance="outlined">
       <mat-card-header>
         <mat-card-title-group>
           <mat-card-title>{{ level.name }}</mat-card-title>
           <mat-card-subtitle>{{ level.title }}</mat-card-subtitle>
-          <button mat-icon-button class="open-button">
+          <button
+            mat-icon-button
+            class="open-button"
+            disabled="!level.unlocked"
+          >
+            @if (level.unlocked) {
             <mat-icon class="aritrain-green">east</mat-icon>
+            } @else {
+            <mat-icon>lock</mat-icon>
+            }
           </button>
         </mat-card-title-group>
       </mat-card-header>

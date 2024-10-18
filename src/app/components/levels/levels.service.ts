@@ -6,7 +6,15 @@ import { levels } from '../../constants';
   providedIn: 'root',
 })
 export class LevelsService {
-  private gameLevels = signal(levels);
+  private parsedLevels = levels.map((level, index) => {
+    const unlocked =
+      index === 0 || levels[index - 1].games.every((game) => game.completed);
+    return {
+      ...level,
+      unlocked,
+    };
+  });
+  private gameLevels = signal(this.parsedLevels);
 
   allLevels = this.gameLevels.asReadonly();
 }

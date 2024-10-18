@@ -22,6 +22,7 @@ export interface Level {
   name: string;
   title: string;
   games: Game[];
+  unlocked?: boolean;
 }
 
 export interface OperationConfig {
