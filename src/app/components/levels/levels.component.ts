@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { MatListModule } from '@angular/material/list';
+import { MatRippleModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { LevelsService } from './levels.service';
@@ -10,7 +10,7 @@ import { LevelsService } from './levels.service';
 @Component({
   selector: 'app-levels',
   standalone: true,
-  imports: [MatListModule, MatButtonModule, MatIconModule, MatDividerModule],
+  imports: [MatRippleModule, MatCardModule, MatButtonModule, MatIconModule],
   templateUrl: './levels.component.html',
   styleUrl: './levels.component.scss',
 })

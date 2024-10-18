@@ -1,7 +1,15 @@
-.level-item {
-  align-items: center;
-  .open-button {
-    display: flex;
-    align-self: center;
+.levels {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  .level-ripple {
+    border-radius: 12px;
+    &:hover {
+      cursor: pointer;
+    }
+    .open-button {
+      display: flex;
+      align-self: center;
+    }
   }
 }

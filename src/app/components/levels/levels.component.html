@@ -1,12 +1,18 @@
-<mat-list>
+<div class="levels">
   @for (level of levels; track level.id) {
-  <mat-list-item (click)="openLevel(level.id)" class="level-item">
-    <div matListItemTitle>{{ level.name }}</div>
-    <div matListItemLine>{{ level.title }}</div>
-    <button mat-icon-button matListItemMeta class="open-button">
-      <mat-icon>east</mat-icon>
-    </button>
-  </mat-list-item>
-  <mat-divider></mat-divider>
+  <div matRipple class="level-ripple" (click)="openLevel(level.id)">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>{{ level.name }}</mat-card-title>
+          <mat-card-subtitle>{{ level.title }}</mat-card-subtitle>
+          <button mat-icon-button class="open-button">
+            <mat-icon class="aritrain-green">east</mat-icon>
+          </button>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content></mat-card-content>
+    </mat-card>
+  </div>
   }
-</mat-list>
+</div>
