@@ -1,3 +1,30 @@
-<span>
-  Game <b>{{ gameData().id }}</b>
-</span>
+<div class="game-container">
+  <div class="timer-box">
+    <div>
+      @if (!isGameStarted()) {
+      <button mat-stroked-button (click)="startCountDown()">
+        <mat-icon>play_arrow</mat-icon>
+        Start
+      </button>
+      }
+    </div>
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <div class="timer">
+          @if (isGameStarted()) {
+          <mat-icon>hourglass_top</mat-icon>
+          }
+          <span class="timer-text">{{ duration() }}</span>
+          @if (!isGameStarted()) {
+          <span>sec.</span>
+          }
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="">Press start button to begin the game.</div>
+    </mat-card-content>
+  </mat-card>
+</div>

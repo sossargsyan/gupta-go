@@ -1,6 +1,6 @@
 import { Level, Operations } from './types';
 
-export const duration = 60;
+export const gameDuration = 60;
 
 export const homeRoute = '/';
 
