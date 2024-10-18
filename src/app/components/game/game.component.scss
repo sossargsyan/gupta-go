@@ -14,6 +14,43 @@
       gap: 16px;
       &-text {
         font-size: 32px;
+        line-height: 1;
+      }
+    }
+  }
+  .question {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    line-height: 1;
+  }
+  .answer-box {
+    display: flex;
+    justify-content: space-around;
+    gap: 16px;
+    flex-wrap: wrap;
+    .answer-btn {
+      width: 44%;
+      height: fit-content;
+      padding: 16px;
+      font-size: 40px;
+    }
+  }
+  .scores {
+    display: flex;
+    justify-content: space-around;
+    gap: 16px;
+    .score-card {
+      width: 44%;
+      &-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+        .score {
+          font-size: 48px;
+          line-height: 1;
+        }
       }
     }
   }

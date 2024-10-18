@@ -1,9 +1,10 @@
 import {
   Component,
   DestroyRef,
+  OnInit,
+  computed,
   inject,
   input,
-  OnInit,
   signal,
 } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
@@ -26,6 +27,11 @@ export class GameComponent implements OnInit {
   gameData = input.required<Game>();
   duration = signal(gameDuration);
   isGameStarted = signal(false);
+  timerClasses = computed(() => ({
+    'aritrain-orange': this.duration() < 20,
+    'aritrain-red': this.duration() < 10,
+  }));
+  answers = [9, 11, 8, 7];
 
   ngOnInit() {
     this.destroyRef.onDestroy(() => {
