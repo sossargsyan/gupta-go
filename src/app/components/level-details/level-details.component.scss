@@ -1,6 +1,7 @@
 .game-header {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .games-container {
   display: flex;
@@ -16,6 +17,15 @@
       flex-direction: column;
       justify-content: center;
       align-items: stretch;
+      .symbol-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .symbol {
+          font-size: 128px;
+          line-height: 1;
+        }
+      }
     }
   }
 }

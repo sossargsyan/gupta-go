@@ -42,6 +42,20 @@ body {
     display: flex;
     justify-content: center;
   }
+  .aritrain {
+    &-green {
+      color: #34a853;
+    }
+    &-orange {
+      color: #fbbc05;
+    }
+    &-blue {
+      color: #4285f4;
+    }
+    &-red {
+      color: #ea4335;
+    }
+  }
 
   // Apply the dark theme by default
   @include mat.all-component-themes($dark-theme);

@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
-import { Level } from '../../types';
+import { Level, OperationConfig } from '../../types';
 import { UtilsService } from '../../services/utils.service';
 
 @Component({
@@ -21,8 +21,8 @@ export class LevelDetailsComponent {
   private _us = inject(UtilsService);
   levelData = input.required<Level>();
 
-  getOperationIcon(operationName: string): string {
-    return this._us.getOperationIcon(operationName);
+  gerOperationConfigs(operationName: string): OperationConfig {
+    return this._us.gerOperationConfigs(operationName);
   }
 
   openGame(gameId: string) {

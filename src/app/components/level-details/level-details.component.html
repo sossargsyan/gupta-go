@@ -1,15 +1,18 @@
 <div class="game-header">
-  <h1>{{ levelData().name }}</h1>
+  <h3>{{ levelData().name }}</h3>
+  <span>{{ levelData().title }}</span>
 </div>
 <div class="games-container">
   @for (game of levelData().games; track game.id) {
   <mat-card appearance="outlined" class="game-item">
-    <img
-      mat-card-image
-      [src]="'images/' + game.id + '.png'"
-      [alt]="game.id + 'image'"
-    />
     <mat-card-content (click)="openGame(game.id)" class="item-content">
+      <div class="symbol-block">
+        <span
+          [class]="'aritrain-' + gerOperationConfigs(game.id).color + ' symbol'"
+        >
+          {{ gerOperationConfigs(game.id).text }}
+        </span>
+      </div>
       <button mat-stroked-button>Play</button>
     </mat-card-content>
   </mat-card>

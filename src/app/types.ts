@@ -23,3 +23,8 @@ export interface Level {
   title: string;
   games: Game[];
 }
+
+export interface OperationConfig {
+  text: string;
+  color: string;
+}
