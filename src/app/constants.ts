@@ -1,4 +1,4 @@
-import { Level, Operations } from './types';
+import { Level, LevelType, Operations } from './types';
 
 export const gameDuration = 60;
 
@@ -6,7 +6,7 @@ export const homeRoute = '/';
 
 export const levels: Level[] = [
   {
-    id: 'single-digit-numbers',
+    id: LevelType.SingleDigit,
     name: 'Level 1',
     title: 'Single-Digit Numbers',
     games: [
@@ -33,7 +33,7 @@ export const levels: Level[] = [
     ],
   },
   {
-    id: 'two-digit-numbers',
+    id: LevelType.TwoDigit,
     name: 'Level 2',
     title: 'Two-Digit Numbers',
     games: [
@@ -60,7 +60,7 @@ export const levels: Level[] = [
     ],
   },
   {
-    id: 'three-digit-numbers',
+    id: LevelType.ThreeDigit,
     name: 'Level 3',
     title: 'Three-Digit Numbers',
     games: [

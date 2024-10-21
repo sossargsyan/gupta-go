@@ -11,8 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { Game } from '../../types';
+import { Answer, Game } from '../../types';
 import { gameDuration } from '../../constants';
+import { GameService } from './game.service';
 
 @Component({
   selector: 'app-game',
@@ -23,6 +24,7 @@ import { gameDuration } from '../../constants';
 })
 export class GameComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
+  private gameService = inject(GameService);
   private interval = 0;
   gameData = input.required<Game>();
   duration = signal(gameDuration);
@@ -31,7 +33,10 @@ export class GameComponent implements OnInit {
     'aritrain-orange': this.duration() < 20,
     'aritrain-red': this.duration() < 10,
   }));
-  answers = [9, 11, 8, 7];
+  correctAnswers = signal(0);
+  incorrectAnswers = signal(0);
+  questionString = signal<string>('');
+  answers = signal<Answer[]>([]);
 
   ngOnInit() {
     this.destroyRef.onDestroy(() => {
@@ -39,7 +44,17 @@ export class GameComponent implements OnInit {
     });
   }
 
+  generateQuestion() {
+    const question = this.gameService.generateRandomOperation(
+      this.gameData().id,
+      this.gameData().levelId
+    );
+    this.questionString.set(question.question);
+    this.answers.set(question.answers);
+  }
+
   startCountDown() {
+    this.generateQuestion();
     this.duration.set(gameDuration);
     this.isGameStarted.set(true);
     this.interval = window.setInterval(() => {
@@ -50,5 +65,14 @@ export class GameComponent implements OnInit {
       }
       this.duration.set(this.duration() - 1);
     }, 1000);
+  }
+
+  selectAnswer(answer: Answer) {
+    if (answer.isCorrect) {
+      this.correctAnswers.set(this.correctAnswers() + 1);
+    } else {
+      this.incorrectAnswers.set(this.incorrectAnswers() + 1);
+    }
+    this.generateQuestion();
   }
 }

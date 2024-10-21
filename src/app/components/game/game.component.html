@@ -31,14 +31,18 @@
   } @else {
   <mat-card appearance="outlined">
     <mat-card-content>
-      <div class="question">5 + 3 = ?</div>
+      <div class="question">{{ questionString() }}</div>
     </mat-card-content>
   </mat-card>
   <mat-card appearance="outlined">
     <mat-card-content class="answer-box">
-      @for (answer of answers; track answer) {
-      <button mat-stroked-button class="answer-btn">
-        {{ answer }}
+      @for (answer of answers(); track $index) {
+      <button
+        mat-stroked-button
+        class="answer-btn"
+        (click)="selectAnswer(answer)"
+      >
+        {{ answer.value }}
       </button>
       }
     </mat-card-content>
@@ -47,13 +51,13 @@
     <mat-card appearance="outlined" class="score-card">
       <mat-card-content class="score-card-content">
         <span class="score-label">Incorrect</span>
-        <span class="score aritrain-red">0</span>
+        <span class="score aritrain-red">{{ incorrectAnswers() }}</span>
       </mat-card-content>
     </mat-card>
     <mat-card appearance="outlined" class="score-card">
       <mat-card-content class="score-card-content">
         <span class="score-label">Correct</span>
-        <span class="score aritrain-green">5</span>
+        <span class="score aritrain-green">{{ correctAnswers() }}</span>
       </mat-card-content>
     </mat-card>
   </div>
