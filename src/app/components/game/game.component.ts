@@ -10,10 +10,17 @@ import {
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
 
 import { Answer, Game } from '../../types';
 import { gameDuration } from '../../constants';
 import { GameService } from './game.service';
+import { ResultsComponent } from '../results/results.component';
 
 @Component({
   selector: 'app-game',
@@ -24,6 +31,7 @@ import { GameService } from './game.service';
 })
 export class GameComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
+  private dialog = inject(MatDialog);
   private gameService = inject(GameService);
   private interval = 0;
   gameData = input.required<Game>();
@@ -53,6 +61,16 @@ export class GameComponent implements OnInit {
     this.answers.set(question.answers);
   }
 
+  openDialog() {
+    this.dialog.open(ResultsComponent, {
+      panelClass: 'results-dialog',
+      data: {
+        correctAnswers: this.correctAnswers(),
+        incorrectAnswers: this.incorrectAnswers(),
+      },
+    });
+  }
+
   startCountDown() {
     this.generateQuestion();
     this.duration.set(gameDuration);
@@ -60,6 +78,7 @@ export class GameComponent implements OnInit {
     this.interval = window.setInterval(() => {
       if (this.duration() === 0) {
         this.isGameStarted.set(false);
+        this.openDialog();
         clearInterval(this.interval);
         return;
       }
