@@ -53,10 +53,8 @@ export class GameComponent implements OnInit {
   }
 
   generateQuestion() {
-    const question = this.gameService.generateRandomOperation(
-      this.gameData().id,
-      this.gameData().levelId
-    );
+    const { id, min, max } = this.gameData();
+    const question = this.gameService.generateRandomOperation(id, min, max);
     this.questionString.set(question.question);
     this.answers.set(question.answers);
   }
@@ -71,9 +69,15 @@ export class GameComponent implements OnInit {
     });
   }
 
+  resetGame() {
+    this.correctAnswers.set(0);
+    this.incorrectAnswers.set(0);
+    this.duration.set(gameDuration);
+  }
+
   startCountDown() {
     this.generateQuestion();
-    this.duration.set(gameDuration);
+    this.resetGame();
     this.isGameStarted.set(true);
     this.interval = window.setInterval(() => {
       if (this.duration() === 0) {
