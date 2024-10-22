@@ -10,12 +10,7 @@ import {
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogTitle,
-  MatDialogContent,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Answer, Game } from '../../types';
 import { gameDuration } from '../../constants';
@@ -60,8 +55,9 @@ export class GameComponent implements OnInit {
   }
 
   openDialog() {
+    const currentTheme = localStorage.getItem('theme');
     this.dialog.open(ResultsComponent, {
-      panelClass: 'results-dialog',
+      panelClass: currentTheme as string,
       data: {
         correctAnswers: this.correctAnswers(),
         incorrectAnswers: this.incorrectAnswers(),
