@@ -21,8 +21,16 @@ export class LevelDetailsComponent {
   private _us = inject(UtilsService);
   levelData = input.required<Level>();
 
-  gerOperationConfigs(operationName: string): OperationConfig {
-    return this._us.gerOperationConfigs(operationName);
+  getOperationConfigs(operationName: string): OperationConfig {
+    return this._us.getOperationConfigs(operationName);
+  }
+
+  isGameUnlocked(index: number): boolean {
+    if (index === 0) {
+      return true;
+    }
+    const previousGame = this.levelData().games[index - 1];
+    return !!previousGame?.completed;
   }
 
   openGame(gameId: string) {

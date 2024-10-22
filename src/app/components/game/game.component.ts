@@ -59,6 +59,8 @@ export class GameComponent implements OnInit {
     this.dialog.open(ResultsComponent, {
       panelClass: currentTheme as string,
       data: {
+        levelId: this.gameData().levelId,
+        gameId: this.gameData().id,
         correctAnswers: this.correctAnswers(),
         incorrectAnswers: this.incorrectAnswers(),
       },

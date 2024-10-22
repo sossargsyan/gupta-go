@@ -6,7 +6,7 @@ import { OperationConfig } from '../types';
   providedIn: 'root',
 })
 export class UtilsService {
-  public gerOperationConfigs(operationName: string): OperationConfig {
+  public getOperationConfigs(operationName: string): OperationConfig {
     switch (operationName) {
       case 'addition':
         return { text: '+', color: 'green' };

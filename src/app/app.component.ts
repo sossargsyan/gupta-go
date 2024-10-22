@@ -17,6 +17,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { JsonReaderService } from './services/json-reader.service';
 import { ThemeType } from './types';
 import { homeRoute } from './constants';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ import { homeRoute } from './constants';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    SidebarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

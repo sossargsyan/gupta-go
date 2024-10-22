@@ -21,6 +21,8 @@ export interface Game {
   levelId?: LevelType;
   min: number;
   max: number;
+  correctAnswers?: number;
+  incorrectAnswers?: number;
   completed?: boolean;
 }
 

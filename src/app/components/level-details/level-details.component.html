@@ -2,17 +2,25 @@
   <h2>{{ levelData().title }}</h2>
 </div>
 <div class="games-container">
-  @for (game of levelData().games; track game.id) {
+  @for (game of levelData().games; track $index) {
   <mat-card appearance="outlined" class="game-item">
     <mat-card-content class="item-content">
       <div class="symbol-block">
         <span
-          [class]="'aritrain-' + gerOperationConfigs(game.id).color + ' symbol'"
+          [class]="'aritrain-' + getOperationConfigs(game.id).color + ' symbol'"
         >
-          {{ gerOperationConfigs(game.id).text }}
+          {{ getOperationConfigs(game.id).text }}
         </span>
       </div>
-      <button mat-stroked-button (click)="openGame(game.id)">Play</button>
+      <button
+        mat-stroked-button
+        (click)="openGame(game.id)"
+        [disabled]="!isGameUnlocked($index)"
+      >
+        @if (!isGameUnlocked($index)) {
+        <mat-icon>lock</mat-icon>
+        } Play
+      </button>
     </mat-card-content>
   </mat-card>
   }
