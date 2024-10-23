@@ -3,3 +3,7 @@
   <div>Correct answers: {{ data.correctAnswers }}</div>
   <div>Incorrect answers: {{ data.incorrectAnswers }}</div>
 </mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="goToNextGame()">Next</button>
+</mat-dialog-actions>

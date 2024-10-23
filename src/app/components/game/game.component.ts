@@ -58,6 +58,10 @@ export class GameComponent implements OnInit {
     const currentTheme = localStorage.getItem('theme');
     this._dialog.open(ResultsComponent, {
       panelClass: currentTheme as string,
+      width: '560px',
+      enterAnimationDuration: '400ms',
+      exitAnimationDuration: '400ms',
+      disableClose: true,
       data: {
         levelId: this.gameData().levelId,
         gameId: this.gameData().id,
