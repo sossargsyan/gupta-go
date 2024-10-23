@@ -1,30 +1,28 @@
 import { Injectable, signal } from '@angular/core';
 
-import { mockLevels } from '../../constants';
+import { initialLevels } from '../../constants';
 import { Level } from '../../types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LevelsService {
-  private initialLevels: Level[] = JSON.parse(JSON.stringify(mockLevels));
-  private gameLevels = signal(this.initialLevels);
-  allLevels = this.gameLevels.asReadonly();
+  private _initialLevels: Level[] = JSON.parse(JSON.stringify(initialLevels));
+  private _gameLevels = signal(this._initialLevels);
+  allLevels = this._gameLevels.asReadonly();
 
   constructor() {
-    let startingLevels: Level[] = [];
+    let startingLevels: Level[] = JSON.parse(JSON.stringify(initialLevels));
     const storageLevels = localStorage.getItem('levels');
     if (storageLevels) {
       startingLevels = JSON.parse(storageLevels) as Level[];
-    } else {
-      startingLevels = [...this.initialLevels];
     }
     startingLevels[0].unlocked = true;
-    this.gameLevels.set(startingLevels);
+    this._gameLevels.set(startingLevels);
   }
 
   private saveLevels() {
-    localStorage.setItem('levels', JSON.stringify(this.gameLevels()));
+    localStorage.setItem('levels', JSON.stringify(this._gameLevels()));
   }
 
   completeGame(
@@ -33,7 +31,7 @@ export class LevelsService {
     correctAnswers: number,
     incorrectAnswers: number
   ) {
-    this.gameLevels.update((prevLevels) => {
+    this._gameLevels.update((prevLevels) => {
       const updatedLevels = [...prevLevels];
       const levelIndex = updatedLevels.findIndex(
         (level) => level.id === levelId
@@ -59,9 +57,9 @@ export class LevelsService {
   }
 
   resetProgress() {
-    const clonnedLevels = JSON.parse(JSON.stringify(mockLevels));
+    const clonnedLevels = JSON.parse(JSON.stringify(initialLevels));
     clonnedLevels[0].unlocked = true;
-    this.gameLevels.set(clonnedLevels);
+    this._gameLevels.set(clonnedLevels);
     this.saveLevels();
   }
 }

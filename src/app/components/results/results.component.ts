@@ -15,11 +15,11 @@ import { LevelsService } from '../levels/levels.service';
   styleUrl: './results.component.scss',
 })
 export class ResultsComponent implements OnInit {
-  private levelService = inject(LevelsService);
+  private _levelService = inject(LevelsService);
   data = inject(MAT_DIALOG_DATA);
 
   ngOnInit() {
-    this.levelService.completeGame(
+    this._levelService.completeGame(
       this.data.levelId,
       this.data.gameId,
       this.data.correctAnswers,

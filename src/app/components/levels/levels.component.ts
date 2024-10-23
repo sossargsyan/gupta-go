@@ -16,10 +16,13 @@ import { Level } from '../../types';
   styleUrl: './levels.component.scss',
 })
 export class LevelsComponent {
-  private _ls = inject(LevelsService);
+  private _levelService = inject(LevelsService);
   private _router = inject(Router);
   private _route = inject(ActivatedRoute);
-  levels = this._ls.allLevels();
+
+  get allLevels() {
+    return this._levelService.allLevels();
+  }
 
   openLevel(level: Level) {
     if (level.unlocked) {

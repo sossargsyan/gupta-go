@@ -25,10 +25,10 @@ import { ResultsComponent } from '../results/results.component';
   styleUrl: './game.component.scss',
 })
 export class GameComponent implements OnInit {
-  private destroyRef = inject(DestroyRef);
-  private dialog = inject(MatDialog);
-  private gameService = inject(GameService);
-  private interval = 0;
+  private _destroyRef = inject(DestroyRef);
+  private _dialog = inject(MatDialog);
+  private _gameService = inject(GameService);
+  private _interval = 0;
   gameData = input.required<Game>();
   duration = signal(gameDuration);
   isGameStarted = signal(false);
@@ -42,21 +42,21 @@ export class GameComponent implements OnInit {
   answers = signal<Answer[]>([]);
 
   ngOnInit() {
-    this.destroyRef.onDestroy(() => {
-      clearInterval(this.interval);
+    this._destroyRef.onDestroy(() => {
+      clearInterval(this._interval);
     });
   }
 
   generateQuestion() {
     const { id, min, max } = this.gameData();
-    const question = this.gameService.generateRandomOperation(id, min, max);
+    const question = this._gameService.generateRandomOperation(id, min, max);
     this.questionString.set(question.question);
     this.answers.set(question.answers);
   }
 
   openDialog() {
     const currentTheme = localStorage.getItem('theme');
-    this.dialog.open(ResultsComponent, {
+    this._dialog.open(ResultsComponent, {
       panelClass: currentTheme as string,
       data: {
         levelId: this.gameData().levelId,
@@ -77,11 +77,11 @@ export class GameComponent implements OnInit {
     this.generateQuestion();
     this.resetGame();
     this.isGameStarted.set(true);
-    this.interval = window.setInterval(() => {
+    this._interval = window.setInterval(() => {
       if (this.duration() === 0) {
         this.isGameStarted.set(false);
         this.openDialog();
-        clearInterval(this.interval);
+        clearInterval(this._interval);
         return;
       }
       this.duration.set(this.duration() - 1);

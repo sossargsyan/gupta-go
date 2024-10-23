@@ -12,9 +12,9 @@ import { LevelsService } from '../levels/levels.service';
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
-  private levelService = inject(LevelsService);
+  private _levelService = inject(LevelsService);
 
   resetProgress() {
-    this.levelService.resetProgress();
+    this._levelService.resetProgress();
   }
 }

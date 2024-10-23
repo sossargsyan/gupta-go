@@ -1,5 +1,5 @@
 <div class="levels">
-  @for (level of levels; track level.id) {
+  @for (level of allLevels; track level.id) {
   <div matRipple class="level-ripple" (click)="openLevel(level)">
     <mat-card appearance="outlined">
       <mat-card-header>

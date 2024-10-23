@@ -4,7 +4,7 @@ export const gameDuration = 60;
 
 export const homeRoute = '/';
 
-export const mockLevels: Level[] = [
+export const initialLevels: Level[] = [
   {
     id: LevelType.SingleDigit,
     name: 'Level 1',

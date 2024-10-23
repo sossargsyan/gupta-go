@@ -14,10 +14,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 
-import { JsonReaderService } from './services/json-reader.service';
 import { ThemeType } from './types';
 import { homeRoute } from './constants';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { UtilsService } from './services/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -42,12 +42,12 @@ export class AppComponent implements OnInit {
   appVersion!: string;
   currentRoute = signal(homeRoute);
   isHomeRoute = computed(() => this.currentRoute() === homeRoute);
-  private _jsonReaderService = inject(JsonReaderService);
+  private _utilsService = inject(UtilsService);
   private _router = inject(Router);
   private _location = inject(Location);
 
   ngOnInit(): void {
-    this._jsonReaderService.getAppVersion().subscribe((version) => {
+    this._utilsService.getAppVersion().subscribe((version) => {
       this.appVersion = version;
     });
     this._router.events.subscribe((event) => {

@@ -18,11 +18,11 @@ import { UtilsService } from '../../services/utils.service';
 export class LevelDetailsComponent {
   private _router = inject(Router);
   private _route = inject(ActivatedRoute);
-  private _us = inject(UtilsService);
+  private _utilsService = inject(UtilsService);
   levelData = input.required<Level>();
 
   getOperationConfigs(operationName: string): OperationConfig {
-    return this._us.getOperationConfigs(operationName);
+    return this._utilsService.getOperationConfigs(operationName);
   }
 
   isGameUnlocked(index: number): boolean {
