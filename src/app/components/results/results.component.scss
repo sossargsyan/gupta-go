@@ -1,0 +1,29 @@
+.results-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-around;
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+  }
+  .scores {
+    display: flex;
+    justify-content: space-around;
+    gap: 24px;
+    padding-bottom: 24PX;
+    .score-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      .score {
+        font-size: 64px;
+        line-height: 1;
+        font-weight: 500;
+      }
+    }
+  }
+}

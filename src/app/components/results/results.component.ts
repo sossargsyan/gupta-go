@@ -1,6 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
 import { LevelsService } from '../levels/levels.service';
@@ -9,7 +11,7 @@ import { Operations } from '../../types';
 @Component({
   selector: 'app-results',
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule],
+  imports: [MatDialogModule, MatButtonModule, MatIconModule, MatDividerModule],
   templateUrl: './results.component.html',
   styleUrl: './results.component.scss',
 })
@@ -17,6 +19,7 @@ export class ResultsComponent implements OnInit {
   private _router = inject(Router);
   private _levelService = inject(LevelsService);
   data = inject(MAT_DIALOG_DATA);
+  starsCount = 5;
 
   ngOnInit() {
     this._levelService.completeGame(
@@ -25,6 +28,30 @@ export class ResultsComponent implements OnInit {
       this.data.correctAnswers,
       this.data.incorrectAnswers
     );
+  }
+
+  get starsArray() {
+    return new Array(this.starsCount);
+  }
+
+  calculatePercentage() {
+    const total = this.data.correctAnswers + this.data.incorrectAnswers;
+    return Math.round((this.data.correctAnswers / total) * 100);
+  }
+
+  detectStarColor(index: number) {
+    const percentage = this.calculatePercentage();
+    const total = this.data.correctAnswers + this.data.incorrectAnswers;
+    const answersTreshold = 10;
+    if (total < answersTreshold) {
+      return '';
+    }
+    const starPercentage = 100 / this.starsCount;
+    const starIndex = Math.floor(percentage / starPercentage);
+    if (index < starIndex) {
+      return 'aritrain-orange';
+    }
+    return '';
   }
 
   goToNextGame() {

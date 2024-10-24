@@ -59,6 +59,7 @@ export class GameComponent implements OnInit {
     this._dialog.open(ResultsComponent, {
       panelClass: currentTheme as string,
       width: '560px',
+      height: '400px',
       enterAnimationDuration: '400ms',
       exitAnimationDuration: '400ms',
       disableClose: true,
