@@ -36,8 +36,8 @@ export class GameComponent implements OnInit {
   duration = signal(gameDuration);
   isGameStarted = signal(false);
   timerClasses = computed(() => ({
-    'aritrain-orange': this.duration() < 20,
-    'aritrain-red': this.duration() < 10,
+    'gupta-go-orange': this.duration() < 20,
+    'gupta-go-red': this.duration() < 10,
   }));
   correctAnswers = signal(0);
   incorrectAnswers = signal(0);

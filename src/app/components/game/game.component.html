@@ -4,7 +4,7 @@
       <div>
         <span
           [class]="
-            'aritrain-' + getOperationConfigs(gameData().id).color + ' symbol'
+            'gupta-go-' + getOperationConfigs(gameData().id).color + ' symbol'
           "
         >
           {{ getOperationConfigs(gameData().id).text }}
@@ -39,11 +39,11 @@
       </div>
       <div class="result-item">
         <div>Correct answers:</div>
-        <div class="result-value aritrain-green">{{ results.correct }}</div>
+        <div class="result-value gupta-go-green">{{ results.correct }}</div>
       </div>
       <div class="result-item">
         <div>Incorrect answers:</div>
-        <div class="result-value aritrain-red">{{ results.incorrect }}</div>
+        <div class="result-value gupta-go-red">{{ results.incorrect }}</div>
       </div>
     </mat-card-content>
   </mat-card>
@@ -75,13 +75,13 @@
     <mat-card appearance="outlined" class="score-card">
       <mat-card-content class="score-card-content">
         <span class="score-label">Incorrect</span>
-        <span class="score aritrain-red">{{ incorrectAnswers() }}</span>
+        <span class="score gupta-go-red">{{ incorrectAnswers() }}</span>
       </mat-card-content>
     </mat-card>
     <mat-card appearance="outlined" class="score-card">
       <mat-card-content class="score-card-content">
         <span class="score-label">Correct</span>
-        <span class="score aritrain-green">{{ correctAnswers() }}</span>
+        <span class="score gupta-go-green">{{ correctAnswers() }}</span>
       </mat-card-content>
     </mat-card>
   </div>

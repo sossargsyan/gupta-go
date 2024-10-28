@@ -1,2 +1,2 @@
-# aritrain
-Train your arithmetic skills
+# gupta-go
+Zero to Hero with Every Click!

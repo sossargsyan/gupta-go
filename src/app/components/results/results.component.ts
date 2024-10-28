@@ -49,7 +49,7 @@ export class ResultsComponent implements OnInit {
     const starPercentage = 100 / this.starsCount;
     const starIndex = Math.floor(percentage / starPercentage);
     if (index < starIndex) {
-      return 'aritrain-orange';
+      return 'gupta-go-orange';
     }
     return '';
   }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "aritrain": {
+    "gupta-go": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/aritrain",
+            "outputPath": "dist/gupta-go",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "aritrain:build:production"
+              "buildTarget": "gupta-go:build:production"
             },
             "development": {
-              "buildTarget": "aritrain:build:development"
+              "buildTarget": "gupta-go:build:development"
             }
           },
           "defaultConfiguration": "development"
