@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { ThemeType } from './types';
 import { homeRoute } from './constants';
@@ -30,6 +31,7 @@ import { UtilsService } from './services/utils.service';
     MatIconModule,
     MatDividerModule,
     SidebarComponent,
+    MatBadgeModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

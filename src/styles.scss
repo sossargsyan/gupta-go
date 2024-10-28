@@ -38,6 +38,9 @@ body {
     flex-direction: column;
     justify-content: space-between;
   }
+  .mat-badge-content {
+    width: max-content !important;
+  }
   .mat-drawer-content {
     display: flex;
     justify-content: center;
