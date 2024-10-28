@@ -19,6 +19,7 @@ export enum Operations {
 export interface Game {
   id: Operations;
   levelId?: LevelType;
+  levelTitle?: string;
   min: number;
   max: number;
   correctAnswers?: number;

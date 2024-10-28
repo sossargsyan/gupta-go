@@ -7,6 +7,15 @@
     justify-content: space-between;
     align-items: center;
     gap: 16px;
+    .title-block {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      .symbol {
+        font-size: 56px;
+        line-height: 0.6;
+      }
+    }
     .timer {
       display: flex;
       justify-content: space-between;
@@ -14,6 +23,21 @@
       gap: 16px;
       &-text {
         font-size: 32px;
+        line-height: 1;
+      }
+    }
+  }
+  .last-results {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    .result-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      .result-value {
+        font-size: 24px;
         line-height: 1;
       }
     }

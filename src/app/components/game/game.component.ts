@@ -8,19 +8,21 @@ import {
   signal,
 } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Answer, Game } from '../../types';
+import { Answer, Game, OperationConfig } from '../../types';
 import { gameDuration } from '../../constants';
 import { GameService } from './game.service';
+import { UtilsService } from '../../services/utils.service';
 import { ResultsComponent } from '../results/results.component';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [MatCardModule, MatIconModule, MatButtonModule],
+  imports: [MatCardModule, MatDividerModule, MatIconModule, MatButtonModule],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
 })
@@ -28,6 +30,7 @@ export class GameComponent implements OnInit {
   private _destroyRef = inject(DestroyRef);
   private _dialog = inject(MatDialog);
   private _gameService = inject(GameService);
+  private _utilsService = inject(UtilsService);
   private _interval = 0;
   gameData = input.required<Game>();
   duration = signal(gameDuration);
@@ -45,6 +48,16 @@ export class GameComponent implements OnInit {
     this._destroyRef.onDestroy(() => {
       clearInterval(this._interval);
     });
+  }
+
+  get results() {
+    const correct = this.gameData().correctAnswers || 0;
+    const incorrect = this.gameData().incorrectAnswers || 0;
+    return { correct, incorrect, total: correct + incorrect };
+  }
+
+  getOperationConfigs(operationName: string): OperationConfig {
+    return this._utilsService.getOperationConfigs(operationName);
   }
 
   generateQuestion() {

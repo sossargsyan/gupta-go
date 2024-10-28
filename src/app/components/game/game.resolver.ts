@@ -17,6 +17,7 @@ export const gameResolver: ResolveFn<Game | UrlTree> = (
   const game = level?.games.find((game) => game.id === gameId);
   if (game) {
     game.levelId = levelId;
+    game.levelTitle = level?.title;
     return game;
   } else {
     // Redirect to a 'not-found' page if the level is not found

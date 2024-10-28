@@ -1,12 +1,16 @@
 <div class="game-container">
   <div class="timer-box">
-    <div>
-      @if (!isGameStarted()) {
-      <button mat-stroked-button (click)="startCountDown()">
-        <mat-icon>play_arrow</mat-icon>
-        Start
-      </button>
-      }
+    <div class="title-block">
+      <div>
+        <span
+          [class]="
+            'aritrain-' + getOperationConfigs(gameData().id).color + ' symbol'
+          "
+        >
+          {{ getOperationConfigs(gameData().id).text }}
+        </span>
+      </div>
+      <div class="title">{{ gameData().levelTitle }}</div>
     </div>
     <mat-card appearance="outlined">
       <mat-card-content>
@@ -22,12 +26,32 @@
       </mat-card-content>
     </mat-card>
   </div>
+  <mat-divider></mat-divider>
   @if (!isGameStarted()) {
   <mat-card appearance="outlined">
-    <mat-card-content>
-      <div>Press start button to begin the game.</div>
+    <mat-card-header>
+      <mat-card-title>Last Game Results</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="last-results">
+      <div class="result-item">
+        <div>Total answers:</div>
+        <div class="result-value">{{ results.total }}</div>
+      </div>
+      <div class="result-item">
+        <div>Correct answers:</div>
+        <div class="result-value aritrain-green">{{ results.correct }}</div>
+      </div>
+      <div class="result-item">
+        <div>Incorrect answers:</div>
+        <div class="result-value aritrain-red">{{ results.incorrect }}</div>
+      </div>
     </mat-card-content>
   </mat-card>
+  <mat-divider></mat-divider>
+  <button mat-stroked-button (click)="startCountDown()">
+    <mat-icon>play_arrow</mat-icon>
+    Start
+  </button>
   } @else {
   <mat-card appearance="outlined">
     <mat-card-content>
