@@ -1,3 +1,16 @@
+<mat-nav-list>
+  @for (item of menuList; track $index) {
+  <mat-list-item (click)="namigate(item.route)" class="item">
+    <button mat-button class="item-btn">
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <a>{{ item.name }}</a>
+    </button>
+  </mat-list-item>
+  }
+</mat-nav-list>
+<div class="divider-block">
+  <mat-divider></mat-divider>
+</div>
 <div class="sidebar-content">
   <button mat-stroked-button (click)="resetProgress()">
     <mat-icon>autorenew</mat-icon>

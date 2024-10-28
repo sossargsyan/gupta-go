@@ -4,6 +4,14 @@ export const gameDuration = 60;
 
 export const homeRoute = '/';
 
+export const sections = [
+  {
+    name: 'About',
+    icon: 'info',
+    route: 'about',
+  },
+];
+
 export const initialLevels: Level[] = [
   {
     id: LevelType.SingleDigit,

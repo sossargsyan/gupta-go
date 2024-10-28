@@ -31,7 +31,7 @@
 <mat-drawer-container class="main-container">
   <mat-drawer #drawer class="main-sidenav" mode="over" opened="false">
     <div class="main-sidenav-top">
-      <app-sidebar></app-sidebar>
+      <app-sidebar [drawer]="drawer"></app-sidebar>
     </div>
     <span>Version: {{ appVersion }}</span>
   </mat-drawer>

@@ -3,6 +3,12 @@ export enum ThemeType {
   Dark = 'dark-theme',
 }
 
+export interface MenuItem {
+  name: string;
+  icon: string;
+  route: string;
+}
+
 export enum LevelType {
   SingleDigit = 'single-digit-numbers',
   TwoDigit = 'two-digit-numbers',
