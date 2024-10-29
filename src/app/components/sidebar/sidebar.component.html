@@ -12,8 +12,17 @@
   <mat-divider></mat-divider>
 </div>
 <div class="sidebar-content">
+  <section class="example-section">
+    <mat-slide-toggle
+      labelPosition="before"
+      [checked]="isSoundEnabled"
+      (change)="toggleSound()"
+    >
+      Sound Effects
+    </mat-slide-toggle>
+  </section>
   <button mat-stroked-button (click)="resetProgress()">
     <mat-icon>autorenew</mat-icon>
-    Reset progress
+    Reset Progress
   </button>
 </div>

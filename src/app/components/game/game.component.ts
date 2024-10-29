@@ -13,10 +13,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Answer, Game, OperationConfig } from '../../types';
+import { Answer, Game, OperationConfig, SoundType } from '../../types';
 import { gameDuration } from '../../constants';
 import { GameService } from './game.service';
 import { UtilsService } from '../../services/utils.service';
+import { SoundService } from '../../services/sound.service';
 import { ResultsComponent } from '../results/results.component';
 
 @Component({
@@ -31,6 +32,7 @@ export class GameComponent implements OnInit {
   private _dialog = inject(MatDialog);
   private _gameService = inject(GameService);
   private _utilsService = inject(UtilsService);
+  private _soundService = inject(SoundService);
   private _interval = 0;
   gameData = input.required<Game>();
   duration = signal(gameDuration);
@@ -48,6 +50,10 @@ export class GameComponent implements OnInit {
     this._destroyRef.onDestroy(() => {
       clearInterval(this._interval);
     });
+  }
+
+  playSound(sound: SoundType) {
+    this._soundService.playSound(sound);
   }
 
   get results() {
@@ -108,8 +114,10 @@ export class GameComponent implements OnInit {
 
   selectAnswer(answer: Answer) {
     if (answer.isCorrect) {
+      this.playSound(SoundType.Correct);
       this.correctAnswers.set(this.correctAnswers() + 1);
     } else {
+      this.playSound(SoundType.Incorrect);
       this.incorrectAnswers.set(this.incorrectAnswers() + 1);
     }
     this.generateQuestion();

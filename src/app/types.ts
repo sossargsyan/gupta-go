@@ -3,6 +3,12 @@ export enum ThemeType {
   Dark = 'dark-theme',
 }
 
+export enum SoundType {
+  Correct = 'correct',
+  Incorrect = 'incorrect',
+  Results = 'results',
+}
+
 export interface MenuItem {
   name: string;
   icon: string;

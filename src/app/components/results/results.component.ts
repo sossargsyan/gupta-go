@@ -6,7 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
 import { LevelsService } from '../levels/levels.service';
-import { Operations } from '../../types';
+import { SoundService } from '../../services/sound.service';
+import { Operations, SoundType } from '../../types';
 
 @Component({
   selector: 'app-results',
@@ -18,10 +19,12 @@ import { Operations } from '../../types';
 export class ResultsComponent implements OnInit {
   private _router = inject(Router);
   private _levelService = inject(LevelsService);
+  private _soundService = inject(SoundService);
   data = inject(MAT_DIALOG_DATA);
   starsCount = 5;
 
   ngOnInit() {
+    this._soundService.playSound(SoundType.Results);
     this._levelService.completeGame(
       this.data.levelId,
       this.data.gameId,
