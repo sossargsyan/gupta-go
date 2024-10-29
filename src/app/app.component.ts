@@ -6,8 +6,12 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { Location } from '@angular/common';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,8 +21,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 
 import { ThemeType } from './types';
 import { homeRoute } from './constants';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UtilsService } from './services/utils.service';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
@@ -46,7 +50,7 @@ export class AppComponent implements OnInit {
   isHomeRoute = computed(() => this.currentRoute() === homeRoute);
   private _utilsService = inject(UtilsService);
   private _router = inject(Router);
-  private _location = inject(Location);
+  private _route = inject(ActivatedRoute);
 
   ngOnInit(): void {
     this._utilsService.getAppVersion().subscribe((version) => {
@@ -71,6 +75,14 @@ export class AppComponent implements OnInit {
   }
 
   goBack() {
-    this._location.back();
+    const currentUrl = this._router.url;
+    const urlSegments = currentUrl.split('/');
+    if (urlSegments.length < 4) {
+      this._router.navigate(['../'], { relativeTo: this._route });
+      return;
+    }
+    urlSegments.pop();
+    const parentUrl = urlSegments.join('/').trim();
+    this._router.navigate([parentUrl]);
   }
 }
