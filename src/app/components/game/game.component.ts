@@ -122,4 +122,9 @@ export class GameComponent implements OnInit {
     }
     this.generateQuestion();
   }
+
+  restartGame() {
+    clearInterval(this._interval);
+    this.startCountDown();
+  }
 }
