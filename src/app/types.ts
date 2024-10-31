@@ -28,6 +28,13 @@ export enum Operations {
   Division = 'division',
 }
 
+export enum OperationSymbols {
+  Addition = '+',
+  Subtraction = '-',
+  Multiplication = '×',
+  Division = '÷',
+}
+
 export interface Game {
   id: Operations;
   levelId?: LevelType;

@@ -2,6 +2,8 @@ import { Level, LevelType, Operations } from './types';
 
 export const gameDuration = 60;
 
+export const optionsCount = 4;
+
 export const homeRoute = '/';
 
 export const sections = [
