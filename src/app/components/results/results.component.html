@@ -20,6 +20,24 @@
       </div>
     </div>
   </div>
+  <mat-divider />
+  @if (data.incorrectRecords.length) {
+  <div class="incorrect-list-block">
+    <p>Incorrect Answers</p>
+    <div class="incorrect-list">
+      @for (item of data.incorrectRecords; track $index) {
+      <div class="incorrect-item">
+        <div>{{ item.question }}&nbsp;</div>
+        <div class="gupta-go-red">{{ item.selectedAnswer }}</div>
+        <div class="gupta-go-green">({{ item.correctAnswer }})</div>
+        <!-- <p>{{ item.question }}</p>
+        <p class="correct-answer">Correct Answer: {{ item.correctAnswer }}</p>
+        <p class="selected-answer">Your Answer: {{ item.selectedAnswer }}</p> -->
+      </div>
+      }
+    </div>
+  </div>
+  }
 </mat-dialog-content>
 <mat-divider />
 <mat-dialog-actions align="end">

@@ -13,7 +13,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Answer, Game, OperationConfig, SoundType } from '../../types';
+import {
+  Answer,
+  AnswerRecord,
+  Game,
+  OperationConfig,
+  SoundType,
+} from '../../types';
 import { gameDuration } from '../../constants';
 import { GameService } from './game.service';
 import { UtilsService } from '../../services/utils.service';
@@ -45,6 +51,7 @@ export class GameComponent implements OnInit {
   incorrectAnswers = signal(0);
   questionString = signal<string>('');
   answers = signal<Answer[]>([]);
+  incorrectRecords = signal<AnswerRecord[]>([]);
 
   ngOnInit() {
     this._destroyRef.onDestroy(() => {
@@ -78,7 +85,6 @@ export class GameComponent implements OnInit {
     this._dialog.open(ResultsComponent, {
       panelClass: currentTheme as string,
       width: '560px',
-      height: '400px',
       enterAnimationDuration: '400ms',
       exitAnimationDuration: '400ms',
       disableClose: true,
@@ -87,6 +93,7 @@ export class GameComponent implements OnInit {
         gameId: this.gameData().id,
         correctAnswers: this.correctAnswers(),
         incorrectAnswers: this.incorrectAnswers(),
+        incorrectRecords: this.incorrectRecords(),
       },
     });
   }
@@ -94,6 +101,7 @@ export class GameComponent implements OnInit {
   resetGame() {
     this.correctAnswers.set(0);
     this.incorrectAnswers.set(0);
+    this.incorrectRecords.set([]);
     this.duration.set(gameDuration);
   }
 
@@ -112,11 +120,20 @@ export class GameComponent implements OnInit {
     }, 1000);
   }
 
+  recordIncorrectAnswer(record: AnswerRecord) {
+    this.incorrectRecords.update((records) => [...records, record]);
+  }
+
   selectAnswer(answer: Answer) {
     if (answer.isCorrect) {
       this.playSound(SoundType.Correct);
       this.correctAnswers.set(this.correctAnswers() + 1);
     } else {
+      this.recordIncorrectAnswer({
+        question: this.questionString().slice(0, -1),
+        selectedAnswer: answer.value,
+        correctAnswer: this.answers().find((a) => a.isCorrect)?.value as number,
+      });
       this.playSound(SoundType.Incorrect);
       this.incorrectAnswers.set(this.incorrectAnswers() + 1);
     }

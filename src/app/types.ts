@@ -67,3 +67,9 @@ export interface Question {
   question: string;
   answers: Answer[];
 }
+
+export interface AnswerRecord {
+  question: string;
+  selectedAnswer: number;
+  correctAnswer: number;
+}

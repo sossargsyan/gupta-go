@@ -13,7 +13,7 @@
     display: flex;
     justify-content: space-around;
     gap: 24px;
-    padding-bottom: 24PX;
+    padding-bottom: 24px;
     .score-block {
       display: flex;
       flex-direction: column;
@@ -23,6 +23,19 @@
         font-size: 64px;
         line-height: 1;
         font-weight: 500;
+      }
+    }
+  }
+  .incorrect-list-block {
+    .incorrect-list {
+      max-height: 160px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-bottom: 16px;
+      .incorrect-item {
+        display: flex;
       }
     }
   }
