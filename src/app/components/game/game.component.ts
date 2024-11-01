@@ -85,6 +85,7 @@ export class GameComponent implements OnInit {
     this._dialog.open(ResultsComponent, {
       panelClass: currentTheme as string,
       width: '560px',
+      maxHeight: '100vh',
       enterAnimationDuration: '400ms',
       exitAnimationDuration: '400ms',
       disableClose: true,
@@ -130,7 +131,7 @@ export class GameComponent implements OnInit {
       this.correctAnswers.set(this.correctAnswers() + 1);
     } else {
       this.recordIncorrectAnswer({
-        question: this.questionString().slice(0, -1),
+        question: this.questionString().split('=')[0],
         selectedAnswer: answer.value,
         correctAnswer: this.answers().find((a) => a.isCorrect)?.value as number,
       });

@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: space-around;
+  padding: 16px;
   .stars {
     display: flex;
     justify-content: center;
@@ -26,17 +27,8 @@
       }
     }
   }
-  .incorrect-list-block {
-    .incorrect-list {
-      max-height: 160px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding-bottom: 16px;
-      .incorrect-item {
-        display: flex;
-      }
-    }
+  .incorrect-list {
+    max-height: 288px;
+    overflow-y: auto;
   }
 }

@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 
 import { LevelsService } from '../levels/levels.service';
@@ -12,7 +14,14 @@ import { Operations, SoundType } from '../../types';
 @Component({
   selector: 'app-results',
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule, MatIconModule, MatDividerModule],
+  imports: [
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    MatCardModule,
+    MatTableModule,
+  ],
   templateUrl: './results.component.html',
   styleUrl: './results.component.scss',
 })
@@ -22,6 +31,7 @@ export class ResultsComponent implements OnInit {
   private _soundService = inject(SoundService);
   data = inject(MAT_DIALOG_DATA);
   starsCount = 5;
+  displayedColumns: string[] = ['question', 'selectedAnswer', 'correctAnswer'];
 
   ngOnInit() {
     this._soundService.playSound(SoundType.Results);
