@@ -1,6 +1,5 @@
 import { Component, inject, input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TitleCasePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,7 +10,7 @@ import { UtilsService } from '../../services/utils.service';
 @Component({
   selector: 'app-level-details',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule, TitleCasePipe],
+  imports: [MatCardModule, MatButtonModule, MatIconModule],
   templateUrl: './level-details.component.html',
   styleUrl: './level-details.component.scss',
 })
